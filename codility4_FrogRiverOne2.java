@@ -7,17 +7,23 @@ import java.util.*;
 
 class Solution {
     public int solution(int X, int[] A) {
-        // write your code in Java SE 8
-        List<Integer> intList = new ArrayList<>();
+        X = 100000;
+        A = getTestArray();
+        Map<Integer,Integer> map = new HashMap<>();
         for (int i = 0; i < A.length; i++) {
-            intList.add(A[i]);
-            int position = 0;
-            for (int j = 0; j < intList.size(); j++) {
-                if (!intList.contains(j + 1)) break;
-                position++;
-                if (position >= X) return i;
-            }
+            map.put(A[i],i);
         }
-        return -1;
+        for(int i=0;i<X;i++){
+            if(map.get(i)==null){
+                return -1;
+        }
+        return map.get(X);
+    }
+    private int[] getTestArray(){
+        int[] A = new int[100000];
+        for(int i =0;i<100000;i++){
+            A[i] = i+1;
+        }
+        return A;
     }
 }
