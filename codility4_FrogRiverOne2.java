@@ -8,22 +8,15 @@ import java.util.*;
 class Solution {
     public int solution(int X, int[] A) {
         // write your code in Java SE 8
-        // PriorityQueue<Integer> pq = new PriorityQueue<>();
         List<Integer> intList = new ArrayList<>();
         for (int i = 0; i < A.length; i++) {
             intList.add(A[i]);
             int position = 0;
             for (int j = 0; j < intList.size(); j++) {
-                if (intList.contains(j + 1)) {
-                    position = j+1;
-                }else{
-                    break;
-                }
-                if (position >= X) {
-                    return i;
-                }
+                if (!intList.contains(j + 1)) break;
+                position++;
+                if (position >= X) return i;
             }
-
         }
         return -1;
     }
