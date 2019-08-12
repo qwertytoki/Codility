@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 // you can also use imports, for example:
 // import java.util.*;
 
@@ -11,7 +13,7 @@ class Solution {
         int[] counters = new int[N];
         for(int i=0;i<A.length;i++){
             if(A[i]==N+1){
-                counters = setMaxValToAll(counters);
+                counters = setMaxValToAll();
             }else{
                 counters[A[i]-1]++;
                 compareMaxValue(counters[A[i]-1]);
@@ -25,10 +27,9 @@ class Solution {
             maxValue = val;    
         }
     }
-    private int[]setMaxValToAll(int[] counters){
-        for(int i=0;i<counters.length;i++){
-            counters[i] =maxValue;
-        }
+    private int[]setMaxValToAll(){
+        int[] counters = new int[N];
+        Arrays.fill(counters, maxValue);
         return counters;
     }
 }
