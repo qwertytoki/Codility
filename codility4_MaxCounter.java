@@ -10,13 +10,12 @@ class Solution {
         // write your code in Java SE 8
         int[] counters = new int[N];
         for(int i=0;i<A.length;i++){
-            if(A[i]==N){
+            if(A[i]==N+1){
                 counters = setMaxValToAll(counters);
             }else{
                 counters[A[i]-1]++;
+                compareMaxValue(counters[A[i]-1]);
             }
-            
-            compareMaxValue(counters[A[i]]);
         }
         return counters;
     }
@@ -27,8 +26,8 @@ class Solution {
         }
     }
     private int[]setMaxValToAll(int[] counters){
-        for(int i:counters){
-           i = maxValue; 
+        for(int i=0;i<counters.length;i++){
+            counters[i] =maxValue;
         }
         return counters;
     }
