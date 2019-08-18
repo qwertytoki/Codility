@@ -1,5 +1,5 @@
 // you can also use imports, for example:
-// import java.util.*;
+import java.util.*;
 
 // you can write to stdout for debugging purposes, e.g.
 // System.out.println("this is a debug message");
@@ -7,16 +7,17 @@
 class Solution {
     public int solution(int[] A) {
         // write your code in Java SE 8
-        int passedCars = 0;
-        for(int i =0;i<A.length;i++){
-            if(A[i]==0){
-                for(int j=i;j<A.length;j++){
-                    if(A[j]==1){
-                        passedCars++;
-                    }
-                }
+        int west = 0;
+        int east = 0;
+        for(int i:A){
+            if(i==0){
+                west++;
             }
+            if(i==1){
+                east = east + west;
+            }
+            if(east >1000000000)return -1;
         }
-        return passedCars;
+        return east;
     }
 }
