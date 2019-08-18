@@ -7,13 +7,19 @@
 class Solution {
     public int solution(int[] A) {
         // write your code in Java SE 8
-        Arrays.sort(A);
-        for(int i =0;i<A.length;i++){
-            if(A[i]!=i+1){
-                // this contains bug. 
-                // A will contain negative values.
-                return i+1;
+        Queue<Integer> pq = new PriorityQueue<>();
+        for(int i:A){
+            if(i>0){
+                pq.add(i);
             }
         }
+        
+        for(int i=0;i<pq.length;i++){
+            if(pq.peek()!=i+1){
+                return pq.peek();
+            }
+            pq.poll();
+        }
+        return 0;
     }
 }
