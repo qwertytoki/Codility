@@ -1,5 +1,5 @@
 // you can also use imports, for example:
-// import java.util.*;
+import java.util.*;
 
 // you can write to stdout for debugging purposes, e.g.
 // System.out.println("this is a debug message");
@@ -7,19 +7,17 @@
 class Solution {
     public int solution(int[] A) {
         // write your code in Java SE 8
-        Queue<Integer> pq = new PriorityQueue<>();
+        List<Integer> list = new ArrayList<>();
         for(int i:A){
-            if(i>0){
-                pq.add(i);
+            if(i>0&&!list.contains(i))
+            list.add(i);
+        }
+        Collections.sort(list);
+        for(int i=0;i<list.size();i++){
+            if(list.get(i)!=i+1){
+                return i+1;
             }
         }
-        
-        for(int i=0;i<pq.length;i++){
-            if(pq.peek()!=i+1){
-                return pq.peek();
-            }
-            pq.poll();
-        }
-        return 0;
+        return list.size()+1;
     }
 }
