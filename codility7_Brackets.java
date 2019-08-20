@@ -1,8 +1,9 @@
 // you can also use imports, for example:
 import java.util.*;
 
-// you can write to stdout for debugging purposes, e.g.
-// System.out.println("this is a debug message");
+// TIMEOUT!
+// need to improve performance
+
 
 class Solution {
     public int solution(String S) {
@@ -22,9 +23,10 @@ class Solution {
             }
             if(deque.peek().equals(map.get(s))){
                 deque.pop();
+            }else{
+                deque.push(s);    
             }
         }
-
         return deque.size()==0?1:0;
         
     }
