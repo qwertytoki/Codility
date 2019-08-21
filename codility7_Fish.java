@@ -15,16 +15,20 @@ class Solution {
             if(isDown){
                 deque.push(power);
             }else{
-                while(deque.size()>0){
-                    if(deque.peek()<power){
-                        deque.poll();
-                    }else{
-                        break;
-                    }
-                }
-                if(deque.size()==0)count++;                      
+                deque = fight(deque,power);
             }
+            if(deque.size()==0)count++;
         }
         return deque.size()+count;
+    }
+    private Deque<Integer> fight(Deque<Integer> deque,int power){
+        while(deque.size()>0){
+            if(deque.peek()<power){
+                deque.poll();
+            }else{
+                break;
+            }
+        }
+        return deque;
     }
 }
