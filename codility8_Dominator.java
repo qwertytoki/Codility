@@ -16,14 +16,18 @@ class Solution {
                 map.put(i,1);
             }
         }
-        return getMaxCount(map);
+        return getMaxIndex(map,A.length/2);
     }
-    private int getMaxCount(Map<Integer,Integer>map){
-        int maxCount = 0;
+    private int getMaxIndex(Map<Integer,Integer>map,int needForDominant){
+        int maxCount =0;
         for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-            
-            maxCount = Math.max(entry.getValue(), maxCount);
+            if(entry.getValue()>maxCount){
+                maxCount = entry.getValue();
+                if(maxCount>needForDominant){
+                    return entry.getKey();
+                }
+            }
         }
-        return maxCount;
+        return -1;
     }
 }
