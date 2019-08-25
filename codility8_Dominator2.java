@@ -6,6 +6,7 @@ import java.util.*;
 
 class Solution {
     public int solution(int[] A) {
+        if(A.length==1)return 0;
         // write your code in Java SE 8
         int needForDominant = A.length/2;
         Map<Integer,Integer> map = new HashMap<>();
