@@ -9,8 +9,8 @@ class Solution {
         // write your code in Java SE 8
         // prime factorization
         // need to improve performance
-        int count = 0;
-        for(int i=1;i<=N;i++){
+        int count = 1;
+        for(int i=1;i<=N/2;i++){
             if(N%i==0)count++;
         }
         return count;
