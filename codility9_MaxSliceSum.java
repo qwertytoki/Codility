@@ -16,28 +16,24 @@ class Solution {
          * 2 coming value is negative but lower than current value
          * 3 current value is negative
          */
-        
+
         if(A.length==0){
             return 0;
         }
-        int maxVal = A[0];
-        int currentVal = A[0];
-        
+        int maxValue= A[0];
+        int currentValue=A[0];
         for(int i=1;i<A.length;i++){
-            if(currentVal<0){
-                if(A[i]>currentVal+A[i]){
-                    maxVal = Math.max(currentVal, maxVal);
-                    currentVal = A[i];
-                }
-            }
-            if(currentVal+A[i]>0){
-                currentVal += A[i];
+            if(currentValue<0){
+                currentValue = A[i];
+            }else if(A[i]>0){
+                currentValue+=A[i];
+            }else if(currentValue+A[i]>0){
+                currentValue+=A[i];
             }else{
-                maxVal = Math.max(currentVal, maxVal);
-                currentVal = A[i];
+                currentValue = A[i];
             }
+            maxValue = Math.max(currentValue,maxValue);
         }
-        
-        return maxVal;
+        return maxValue;
     }
 }
