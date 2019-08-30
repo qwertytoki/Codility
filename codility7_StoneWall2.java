@@ -13,22 +13,24 @@ class Solution {
          * than foundation,then current queue is finish if next int is same of contents
          * of queue, then 0 count.
          */
-         
-        List<Integer> list = new ArrayList<>();
+        Deque<Integer> deque = new ArrayDeque<>();
         int count = 0;
-        for (int i : H) {
-            if (list.size() == 0) {
-                list.add(i);
-            } else if (list.get(0) > i) {
-                list.clear();
-                list.add(i);
-            } else if (!list.contains(i)) {
-                list.add(i);
-            } else {
+        for(int i:H){
+            if(deque.size() == 0){
+                deque.push(i);
+                count++;
                 continue;
             }
+            while(deque.size()!=0 && deque.peek()>i){
+                deque.poll();
+            }
+            if(deque.size()!=0 &&deque.peek()==i){
+                continue;
+            }
+            deque.push(i);
             count++;
         }
+        
         return count;
     }
 }
