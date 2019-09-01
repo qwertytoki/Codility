@@ -14,7 +14,6 @@ class Solution {
          * 2 how they proceed (int move)
          * 3 which places are empty (List<Integer> eatenList)
          */
-        if(N<M)return 1;
         int place = 0;
         int move = M;
         int length = N;
@@ -27,8 +26,8 @@ class Solution {
         }
         eatenList.add(place);
         place += move;
-        if(place>=length){
-            place-=length;
+        while(place>=length){
+            place -= length;
         }
         return eat(place, move, length, eatenList);
     }
