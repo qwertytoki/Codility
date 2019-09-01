@@ -19,7 +19,7 @@ class Solution {
     private int getGCD(int N,int M){
         if(N<M)getGCD(M,N);
         if(N % M ==0)return M;
-        getGCD(N, N % M);
+        return getGCD(N, N % M);
     }
     private int eat(int place,int move,int length,List<Integer>eatenList){
         if(eatenList.contains(place)){
