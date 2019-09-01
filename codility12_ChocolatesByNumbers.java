@@ -14,11 +14,12 @@ class Solution {
          * 2 how they proceed (int move)
          * 3 which places are empty (List<Integer> eatenList)
          */
-        int place = 0;
-        int move = M;
-        int length = N;
-        List<Integer> eatenList = new ArrayList<>();
-        return eat(place,move,length,eatenList);
+        return M*N/getGCD(N,M);
+    }
+    private int getGCD(int N,int M){
+        if(N<M)getGCD(M,N);
+        if(N % M ==0)return M;
+        getGCD(N, N % M);
     }
     private int eat(int place,int move,int length,List<Integer>eatenList){
         if(eatenList.contains(place)){
@@ -26,8 +27,8 @@ class Solution {
         }
         eatenList.add(place);
         place += move;
-        while(place>=length){
-            place -= length;
+        if(place>=length){
+            place = place%length;
         }
         return eat(place, move, length, eatenList);
     }
