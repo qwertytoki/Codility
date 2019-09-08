@@ -3,11 +3,13 @@ import java.util.*;
 
 class Solution {
     public int solution(int[] A) {
-        
+
         /**
          * find trianguable triplet 
          * largest < smallest + middle : trianguable
+         * O(N^3) is bad.  need to update performance
          */
+        
         if(A.length<3)return 0;
         //blute force
         int count =0;
