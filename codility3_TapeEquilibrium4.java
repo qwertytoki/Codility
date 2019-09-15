@@ -1,25 +1,24 @@
 // you can also use imports, for example:
-import java.util.*;
+// import java.util.*;
+
+// you can write to stdout for debugging purposes, e.g.
+// System.out.println("this is a debug message");
+
 class Solution {
     public int solution(int[] A) {
-        /**
-         * look for smallest divide place
-         * compare and record minimum value
-         */
-        int sum = 0;
+        // write your code in Java SE 8
+        int total = 0;
         for(int i:A){
-            sum+=i;
+            total+=i;
         }
-        int minVal = sum - A[0]*2;
-        if(minVal<0)
-            minVal= minVal*-1;
-        
-        for(int i=1;i<A.length-1;i++){
-            sum-=A[i]*2;
-            sum = sum<0 ? sum*-1:sum;
-            minVal = Math.min(minVal,sum);
-            
+        int minDistance = Integer.MAX_VALUE;
+        int current = 0;
+        int last = total;
+        for(int i=0;i<A.length-1;i++){
+            current +=A[i];
+            last -=A[i];
+            minDistance = Math.min(minDistance,Math.abs(current-last));
         }
-        return minVal;
+        return minDistance;
     }
 }
